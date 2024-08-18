@@ -27,3 +27,4 @@ opt.clipboard:append("unnamedplus")
 
 opt.splitright = true
 opt.splitbelow = true
+opt.cmdheight = 0
