@@ -11,12 +11,13 @@ return {
     { "ff", function() require('telescope.builtin').find_files() end, desc = "Find Files" },
     { "fw", function() require('telescope.builtin').live_grep() end, desc = "Live Grep" },
   },
-  config = function() 
+  config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
 
     telescope.setup({
       defaults = {
+        path_display = { "smart" },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -25,5 +26,7 @@ return {
         },
       },
     })
+
+    telescope.load_extension("fzf")
   end,
 }

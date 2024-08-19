@@ -21,6 +21,9 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
+        -- Ensure Telescope is loaded
+        require("telescope")
+
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
