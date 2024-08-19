@@ -14,8 +14,18 @@ return {
   opts = {
     filesystem = {
       follow_current_file = {
-        enabled=true, -- Automatically reveal the current file
+        enabled = true, -- Automatically reveal the current file
       },
+      filtered_items = {
+        hide_gitignored = true,
+        hide_dotfiles = false,
+        hide_by_name = {
+          "__pycache__",
+        },
+      },
+    },
+    window = {
+      width = 35,
     },
   },
 }
