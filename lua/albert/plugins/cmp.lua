@@ -29,11 +29,11 @@ return {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
-      -- snippet = { -- configure how nvim-cmp interacts with snippet engine
-      --   expand = function(args)
-      --     luasnip.lsp_expand(args.body)
-      --   end,
-      -- },
+      snippet = { -- configure how nvim-cmp interacts with snippet engine
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      },
       mapping = cmp.mapping.preset.insert({
         ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- previous suggestion
         ["<Tab>"] = cmp.mapping.select_next_item(), -- previous suggestion
