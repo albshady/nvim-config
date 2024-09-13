@@ -3,6 +3,8 @@ return {
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer", -- source for text in buffer
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
     "hrsh7th/cmp-path", -- source for file system paths
     {
       "L3MON4D3/LuaSnip",
@@ -17,9 +19,7 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-
     local luasnip = require("luasnip")
-
     local lspkind = require("lspkind")
 
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
@@ -29,11 +29,11 @@ return {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
-      snippet = { -- configure how nvim-cmp interacts with snippet engine
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
+      -- snippet = { -- configure how nvim-cmp interacts with snippet engine
+      --   expand = function(args)
+      --     luasnip.lsp_expand(args.body)
+      --   end,
+      -- },
       mapping = cmp.mapping.preset.insert({
         ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- previous suggestion
         ["<Tab>"] = cmp.mapping.select_next_item(), -- previous suggestion
@@ -41,14 +41,16 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<S-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+        ["<C-t>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" }, -- text within current buffer
+        { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
+        -- { name = "luasnip" }, -- snippets
+        -- { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
       }),
 
