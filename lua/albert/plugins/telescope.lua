@@ -8,15 +8,16 @@ return {
 	},
 
 	keys = {
+		{ "<leader>f", function() end, desc = "Telescope search" },
 		{
-			"ff",
+			"<leader>ff",
 			function()
 				require("telescope.builtin").find_files()
 			end,
 			desc = "Find Files",
 		},
 		{
-			"fw",
+			"<leader>fw",
 			function()
 				require("telescope.builtin").live_grep()
 			end,
