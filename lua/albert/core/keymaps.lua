@@ -4,7 +4,7 @@ local keymap = vim.keymap
 
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit file" })
-keymap.set("n", "<leader>h", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>=", "ggVG=", { desc = "Select all and auto-indent" })
 keymap.set("n", "<leader>c", ":bd<CR>", { desc = "Close current buffer" })
 keymap.set("n", "H", ":bprev<CR>", { desc = "Previous buffer" })
