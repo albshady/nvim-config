@@ -54,6 +54,24 @@ return {
 			desc = "Live Grep in git files",
 		},
 		{
+			"<leader>fp",
+			function()
+				require("telescope.builtin").live_grep({
+					vimgrep_arguments = vim.tbl_flatten({
+						require("telescope.config").values.vimgrep_arguments,
+						-- FIXME
+						"--glob",
+						"!.*",
+						"--glob",
+						"!deps/**",
+						"--glob",
+						"*.py",
+					}),
+				})
+			end,
+			desc = "Live Grep in python files",
+		},
+		{
 			"<leader>fs",
 			function()
 				require("telescope.builtin").grep_string()

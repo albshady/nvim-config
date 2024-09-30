@@ -106,7 +106,7 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "diff", "diagnostics" },
 				lualine_c = {},
-				lualine_x = { get_attached_clients },
+				lualine_x = { attached_clients },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
