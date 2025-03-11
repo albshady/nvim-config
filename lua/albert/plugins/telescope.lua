@@ -17,6 +17,17 @@ return {
 			desc = "Find Files",
 		},
 		{
+			"<leader>fa",
+			function()
+				require("telescope.builtin").find_files({
+					hidden = true, -- Include hidden files
+					no_ignore = true, -- Do not respect .gitignore
+					follow = true, -- Follow symbolic links
+				})
+			end,
+			desc = "Find all files (including hidden)",
+		},
+		{
 			"<leader>fw",
 			function()
 				require("telescope.builtin").live_grep()
