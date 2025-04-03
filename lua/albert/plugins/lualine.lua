@@ -84,6 +84,16 @@ local function get_attached_clients()
 	return language_servers
 end
 
+local function word_count()
+	local buf_ft = vim.bo.filetype
+	if buf_ft ~= "text" then
+		return "" -- Show nothing if the file is not a .txt file
+	end
+
+	local words = vim.fn.wordcount().words
+	return words
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
 	requires = { "nvim-tree/nvim-web-devicons", opt = true },
@@ -106,7 +116,7 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "diff", "diagnostics" },
 				lualine_c = {},
-				lualine_x = { attached_clients },
+				lualine_x = { attached_clients, word_count },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
