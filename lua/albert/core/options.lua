@@ -31,3 +31,5 @@ opt.splitbelow = true
 opt.cmdheight = 0
 
 opt.undofile = true
+
+vim.g.python3_host_prog = "/Users/albert/.pyenv/shims/python"
