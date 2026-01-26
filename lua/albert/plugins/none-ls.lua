@@ -29,7 +29,12 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.diagnostics.mypy,
+				-- null_ls.builtins.diagnostics.mypy,
+				-- Use poetry run mypy instead of system mypy
+				null_ls.builtins.diagnostics.mypy.with({
+					command = "mypy",
+					args = { "--show-column-numbers", "$FILENAME" },
+				}),
 				null_ls.builtins.formatting.prettier,
 			},
 		})
