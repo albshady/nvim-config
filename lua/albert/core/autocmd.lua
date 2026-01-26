@@ -26,3 +26,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_augroup("text_wrapping", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Enable wrap and linebreak for text and markdown files",
+	group = "text_wrapping",
+	pattern = { "text", "markdown" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+	end,
+})
