@@ -8,3 +8,4 @@
 4. `ifmain` snippet
 5. Delete without copying shortcut
 6. More shortcuts for telescope
+7. Pin the title of class / function / method I'm in on top
