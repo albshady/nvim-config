@@ -94,6 +94,17 @@ local function word_count()
 	return words
 end
 
+local function search_result()
+	if vim.v.hlsearch == 0 then
+		return ""
+	end
+	local ok, result = pcall(vim.fn.searchcount, { maxcount = 999, timeout = 100 })
+	if not ok or result.current == 0 then
+		return ""
+	end
+	return string.format("[%d/%d]", result.current, result.total)
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
 	requires = { "nvim-tree/nvim-web-devicons", opt = true },
@@ -115,7 +126,7 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "diff", "diagnostics" },
-				lualine_c = {},
+				lualine_c = { search_result },
 				lualine_x = { attached_clients, word_count },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
